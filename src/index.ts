@@ -1,4 +1,4 @@
-import wol from "wol"
+import wol from "wol";
 
 interface Host {
     mac: string;
@@ -18,12 +18,12 @@ export class WOL {
             if (result) {
                 return true;
             } else {
-                throw new Error(`Failed to wake host using MAC ${host.mac} and port ${host.port}`)
+                throw new Error(`Failed to wake host using MAC ${host.mac} and port ${host.port}`);
             }
         } catch (err) {
-            let message = `Failed to wake host using MAC ${host.mac} and port ${host.port}`
+            let message = `Failed to wake host using MAC ${host.mac} and port ${host.port}`;
             if (err.message != null) {
-                message = `${message}\n${err.message}`
+                message = `${message}\n${err.message}`;
             }
             throw new Error(message);
         }
