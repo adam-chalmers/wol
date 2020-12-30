@@ -14,7 +14,7 @@ export class WOL {
 
     public async sendPacket(host: Host): Promise<boolean> {
         try {
-            let result = await wol.wake(host.mac, { address: this.broadcastAddress, port: host.port });
+            const result = await wol.wake(host.mac, { address: this.broadcastAddress, port: host.port });
             if (result) {
                 return true;
             } else {
@@ -23,7 +23,7 @@ export class WOL {
         } catch (err) {
             let message = `Failed to wake host using MAC ${host.mac} and port ${host.port}`;
             if (err.message != null) {
-                message = `${message}\n${err.message}`;
+                message += `\n${err.message}`;
             }
             throw new Error(message);
         }
