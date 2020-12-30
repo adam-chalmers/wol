@@ -1,6 +1,6 @@
 {
     "name": "@adam-chalmers/wol",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A library for sending WOL (Wake On LAN) packets to local network addresses.",
     "author": "Adam Chalmers <adam.chalmers93@gmail.com>",
     "license": "ISC",
