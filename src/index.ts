@@ -1,9 +1,5 @@
 import wol from "wol";
-
-interface Host {
-    mac: string;
-    port: number;
-}
+import { Host } from "./types/host";
 
 export class WOL {
     private readonly broadcastAddress: string;
