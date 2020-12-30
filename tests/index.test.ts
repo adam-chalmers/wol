@@ -24,18 +24,18 @@ describe("@adam-chalmers/wol @unit index.ts", () => {
         expect(wakeMock.mock.calls[0]).toEqual([host.mac, { address: broadcastAddress, port: host.port }]);
     });
 
-    it("Should return true if the packet is successfully sent", () => {
+    it("Should return true if the packet is successfully sent", async () => {
         wol.wake = jest.fn().mockImplementation(async () => true);
-        expect(instance.sendPacket(host)).resolves.toEqual(true);
+        await expect(instance.sendPacket(host)).resolves.toEqual(true);
     });
 
-    it("Should throw an error if the packet is not successfully sent", () => {
+    it("Should throw an error if the packet is not successfully sent", async () => {
         wol.wake = jest.fn().mockImplementation(async () => false);
-        expect(instance.sendPacket(host)).rejects.toThrowError();
+        await expect(instance.sendPacket(host)).rejects.toThrowError();
     });
 
-    it("Should throw an error if the wol lib throws an error", () => {
+    it("Should throw an error if the wol lib throws an error", async () => {
         wol.wake = jest.fn().mockImplementation(() => Promise.reject(new Error("")));
-        expect(instance.sendPacket(host)).rejects.toThrowError();
+        await expect(instance.sendPacket(host)).rejects.toThrowError();
     });
 });
